@@ -112,42 +112,42 @@ namespace Wisielec
 
         private void czarnyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            this.BackColor = System.Drawing.Color.Black;
         }
 
         private void czerwonyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            this.BackColor = System.Drawing.Color.Red;
         }
 
         private void zielonyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            this.BackColor = System.Drawing.Color.Green;
         }
 
         private void niebieskiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            this.BackColor = System.Drawing.Color.Blue;
         }
 
         private void czarnyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+            this.ForeColor = System.Drawing.Color.Black;
         }
 
         private void czerwonyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+            this.ForeColor = System.Drawing.Color.Red;
         }
 
         private void zielonyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+            this.ForeColor = System.Drawing.Color.Green;
         }
 
         private void niebieskiToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+            this.ForeColor = System.Drawing.Color.Blue;
         }
 
         public void update(string value)
