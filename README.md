@@ -71,12 +71,14 @@ namespace Wisielec
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            MessageBox.Show(WordsManager.getInstance().getSecretWord(), "Słowo:", buttons);
         }
 
         private void toolStripMenuItem2_Click_1(object sender, EventArgs e)
         {
-           
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            MessageBox.Show("Dominik Pyrda a.k.a Loczek \n Marcin Srebro a.k.a Albatros", "Twórcy", buttons);
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -86,12 +88,21 @@ namespace Wisielec
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
-         
+            bool result = (MessageBox.Show("Czy na pewno chcesz zakończyć?", "Exit",
+                  MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+                  == DialogResult.Yes);
+            newGame(!result);
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
-         
+            bool result = (MessageBox.Show("Czy na pewno chcesz zacząć od nowa?", "Nowa Gra",
+                  MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+                  == DialogResult.Yes);
+            if (result)
+            {
+                newGame(result);
+            }
         }
 
         private void toolStripComboBox1_Click(object sender, EventArgs e)
