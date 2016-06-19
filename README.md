@@ -35,14 +35,25 @@ namespace Wisielec
 
         private void quessClick(object sender, EventArgs e)
         {
-         
+            Button wybor = sender as Button;
+            
+
+            if (WordsManager.getInstance().checkWord(wybor.Text))
+            {
+              
+            }
+            else
+            {
+             
+            }
         }
 
 
         private void Wisielecc_Load(object sender, EventArgs e)
         {
 
-            
+            WordsManager.getInstance().loadWords(File.ReadAllLines("slowa.txt"));
+            WordsManager.getInstance().randomWord();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -114,133 +125,7 @@ namespace Wisielec
         {
             
         }
-
-        
-
-        private void newGame(bool newGame)
-        {
-           
-        }
-    }
-}
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
-using Wisielec.Utils;
-
-namespace Wisielec
-{
-
-    public partial class Wisielecc : Form
-    {
-
-        private Bitmap[] Images = { Wisielec.Properties.Resources._1, // obrazki
-                                 Wisielec.Properties.Resources._2,
-                                 Wisielec.Properties.Resources._3,
-                                 Wisielec.Properties.Resources._4,
-                                 Wisielec.Properties.Resources._5,
-                                 Wisielec.Properties.Resources._6,
-                                 Wisielec.Properties.Resources._7,
-                                 Wisielec.Properties.Resources._8,
-                                 Wisielec.Properties.Resources._9 };
-
-        
-
-        public Wisielecc()
-        {
-            InitializeComponent();
-        }
-
-        private void quessClick(object sender, EventArgs e)
-        {
-         
-        }
-
-
-        private void Wisielecc_Load(object sender, EventArgs e)
-        {
-
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void toolStripMenuItem2_Click_1(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void czarnyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void czerwonyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void zielonyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void niebieskiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void czarnyToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void czerwonyToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void zielonyToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void niebieskiToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -346,6 +231,7 @@ namespace Wisielec.Utils
     }
 }
 
+        
 
         private void newGame(bool newGame)
         {
