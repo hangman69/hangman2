@@ -13,7 +13,7 @@ using Wisielec.Utils;
 namespace Wisielec
 {
 
-    public partial class Wisielecc : Form
+    public partial class Wisielecc : Form, IObserver
     {
 
         private Bitmap[] Images = { Wisielec.Properties.Resources._1, // obrazki
@@ -64,6 +64,8 @@ namespace Wisielec
 
         private void Wisielecc_Load(object sender, EventArgs e)
         {
+            WordsManager.getInstance().addObserver(wrongGuesses);
+            WordsManager.getInstance().addObserver(this);
 
             WordsManager.getInstance().loadWords(File.ReadAllLines("slowa.txt"));
             WordsManager.getInstance().randomWord();
@@ -210,6 +212,8 @@ namespace Wisielec.Utils
 
         private string guessedWord;
 
+        private List<IObserver> observers = new List<IObserver>();
+
         public WordsManager()
         {
 
@@ -257,7 +261,7 @@ namespace Wisielec.Utils
                 guessedWord += "_";
             }
 
-           
+            notifyObservers(guessedWord);
         }
 
         public string getSecretWord()
@@ -282,17 +286,29 @@ namespace Wisielec.Utils
 
                 }
                 guessedWord = new string(temp);
-                
+                notifyObservers(guessedWord);
             }
             else
             {
-                
+                notifyObservers(null);
             }
 
             return secretWord.Equals(guessedWord);
         }
 
-    
+        private void notifyObservers(string value)
+        {
+            foreach(IObserver o in observers)
+            {
+                o.update(value);
+            }
+        }
+
+        public void addObserver(IObserver observer)
+        {
+            this.observers.Add(observer);
+        }
+
     }
 }
 using System;
@@ -303,7 +319,7 @@ using System.Threading.Tasks;
 
 namespace Wisielec.Utils
 {
-    public class WrongGuesses 
+    public class WrongGuesses : IObserver
     {
         private int counter;
 
