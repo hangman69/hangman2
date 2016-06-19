@@ -26,7 +26,7 @@ namespace Wisielec
                                  Wisielec.Properties.Resources._8,
                                  Wisielec.Properties.Resources._9 };
 
-        
+        private WrongGuesses wrongGuesses = new WrongGuesses();
 
         public Wisielecc()
         {
@@ -126,14 +126,32 @@ namespace Wisielec
             
         }
 
-        
+        public void update(string value)
+        {
+            if (value != null)
+            {
+                lbltekst.Text = "";
+                for (int index = 0; index < value.Length; index++)
+                {
+                    lbltekst.Text += value.Substring(index, 1);
+                    lbltekst.Text += " ";
+                }
+            }
+            else
+            {
+                if (wrongGuesses.getCounter() < Images.Length)
+                {
+                    wisielecImage.Image = Images[wrongGuesses.getCounter()];
+                }
+            }
+        }
 
         private void newGame(bool newGame)
         {
             if (newGame)
             {
-                
-                
+                wrongGuesses.reset();
+                wisielecImage.Image = Images[wrongGuesses.getCounter()];
                 WordsManager.getInstance().randomWord();
                 tesktowe1.Text = "";
                 for (int i = 0; i < this.Controls.Count; i++)
