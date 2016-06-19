@@ -1,5 +1,3 @@
-# hangman2
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +30,6 @@ namespace Wisielec
     }
 }
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,5 +38,34 @@ using System.Threading.Tasks;
 
 namespace Wisielec.Utils
 {
+    public class WordsManager
+    {
+
+        private static char[] SEPARATOR = { ',' };
+
+        private string[] words;
+
+        public WordsManager()
+        {
+
+        }
+
+        public void loadWords(string[] fileLines)
+        {
+            words = new string[fileLines.Length];  //robimy dynamicznie tablice o dlugosci jaka ma readtext
+            int index = 0;
+            foreach (string s in fileLines)
+            {
+                string[] line = s.Split(SEPARATOR);
+                words[index++] = line[1];
+            }
+        }
+
+        public string[] getWords()
+        {
+            return words;
+        }
+        
     
+    }
 }
