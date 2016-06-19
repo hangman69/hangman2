@@ -36,7 +36,7 @@ namespace Wisielec
         private void quessClick(object sender, EventArgs e)
         {
             Button wybor = sender as Button;
-            
+            wybor.Enabled = false; // sprawia ze po użyciu jest nieaktywne
 
             if (WordsManager.getInstance().checkWord(wybor.Text))
             {
@@ -125,6 +125,29 @@ namespace Wisielec
         {
             
         }
+
+        
+
+        private void newGame(bool newGame)
+        {
+            if (newGame)
+            {
+                
+                
+                WordsManager.getInstance().randomWord();
+                tesktowe1.Text = "";
+                for (int i = 0; i < this.Controls.Count; i++)
+                {
+                    this.Controls[i].Enabled = true;
+                }
+            }
+            else
+            {
+                Application.Exit();
+            }
+        }
+    }
+}
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -230,12 +253,39 @@ namespace Wisielec.Utils
     
     }
 }
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-        
+namespace Wisielec.Utils
+{
+    public class WrongGuesses 
+    {
+        private int counter;
 
-        private void newGame(bool newGame)
+        public WrongGuesses()
         {
-           
+            reset();
+        }
+
+        public int getCounter()
+        {
+            return counter;
+        }
+
+        public void reset()
+        {
+            counter = 0;
+        }
+
+        public void update(string value)
+        {
+            if (value == null)
+            {
+                counter++;
+            }
         }
     }
 }
