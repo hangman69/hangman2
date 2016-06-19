@@ -40,11 +40,24 @@ namespace Wisielec
 
             if (WordsManager.getInstance().checkWord(wybor.Text))
             {
-              
+                tesktowe1.Text = " Wygrałeś !!! :) ";
+
+                bool result = (MessageBox.Show("Czy chcesz zacząć od nowa?", "Wygrałeś !!!",
+   MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+   == DialogResult.Yes);
+                newGame(result);
             }
             else
             {
-             
+                if (wrongGuesses.getCounter() >= Images.Length - 1)
+                {
+                    tesktowe1.Text = " Przegrałeś !!! :( ";
+
+                    bool result = (MessageBox.Show("Czy chcesz zacząć od nowa?", "Przegrałeś",
+           MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+           == DialogResult.Yes);
+                    newGame(result);
+                }
             }
         }
 
