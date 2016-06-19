@@ -27,6 +27,16 @@ namespace Wisielec
                                  Wisielec.Properties.Resources._9 };
 
         
+
+        public Wisielecc()
+        {
+            InitializeComponent();
+        }
+      
+        private void newGame(bool newGame)
+        {
+           
+        }
     }
 }
 
@@ -44,6 +54,10 @@ namespace Wisielec.Utils
         private static char[] SEPARATOR = { ',' };
 
         private string[] words;
+
+        private string secretWord;
+
+        private string guessedWord;
 
         public WordsManager()
         {
@@ -65,7 +79,24 @@ namespace Wisielec.Utils
         {
             return words;
         }
+
+        public void randomWord()
+        {
+            int quessIndex = (new Random()).Next(words.Length);
+            secretWord = words[quessIndex];
+
+            guessedWord = "";
+            for (int index = 0; index < secretWord.Length; index++)
+            {
+                guessedWord += "_";
+            }
+
+           
+        }
+
         
+        
+
     
     }
 }
